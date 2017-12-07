@@ -1,0 +1,21 @@
+0. Create a collection named orders.
+Answer: db.createCollection('orders');
+{ "ok" : 1 }
+
+1. Insert at least 3 documents that represent an order. IMPORTANT: See section below for fields.
+Answer: 
+db.orders.insert({Date: new Date('Dec 1, 2011')}, {orderTotal: 23}, unitPrice: 56, quantity: 4, productName: 'ZipZap'}});
+db.orders.insert({Date: new Date('Sep 12, 2014')}, {orderTotal: 71}, unitPrice: 13, quantity: 10, productName: 'GlipGlop'}}); 
+db.orders.insert({Date: new Date('Jul 23, 2016')}, {orderTotal: 12},unitPrice: 7, quantity: 9, productName: 'soap'}});
+
+AnswerKey(for my own reference): db.orders.insert([
+ {orderDate: new Date('1982-01-04'), orderTotal: 12.99, lineItems: [{unitPrice: 2.00, quantity: 5, productName: 'ZipZap'}]},
+ {orderDate: new Date('Sep 12, 2014'), orderTotal: 71, lineItems: [{unitPrice: 13, quantity: 10, productName: 'GlipGlop'}]}, 
+ {orderDate: new Date('Jul 23, 2016'), orderTotal: 12, lineItems: [{unitPrice: 7, quantity: 9, productName: 'soap'}]}]);
+2. Find a single order document, any order document.
+Answer: db.orders.findOne();
+
+3. Find all orders and make them look pretty.
+Answer: db.orders.find().pretty();
+
+4. Find all orders with an orderDate that is prior to 1/1/2016.
